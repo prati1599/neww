@@ -1,0 +1,97 @@
+drop database user;
+create database user;
+ 
+use user;
+create table buyer(
+buyerid integer primary key,
+name varchar(50),
+email varchar(50),
+phonenumber bigint,
+password varchar(50),
+isprivileged boolean,
+rewarpoints integer,
+isactive boolean
+
+);
+
+insert into buyer values(20001 , 'rohit raj' ,'rohit02raj10@gmail.com',848465475,'rohita02raj' , true,500, true);
+insert into buyer values(20002 , 'rohit raj1' ,'rohit03raj10@gmail.com',848465476,'rohita03raj' , false,800, false);
+insert into buyer values(20003 , 'rohit raj2' ,'rohit03raj10@gmail.com',848465477,'rohita04raj' , true,900, true);
+
+
+
+create table seller(
+sellerid integer primary key,
+name varchar(50),
+email varchar(50),
+phonenumber bigint,
+password varchar(50),
+isactive boolean
+);
+insert into seller values(3001 , 'Ritu Raj' ,'ritu02raj@gamil.com', 84848484844 , 'rithut002' ,true);
+insert into seller values(3002 , 'Ritu Raj1' ,'ritu03raj@gamil.com', 84848484845 , 'rithut003' ,false);
+insert into seller values(3003 , 'Ritu Raj2' ,'ritu04raj@gamil.com', 84848484846 , 'rithut004' ,true);
+
+
+
+create table wishlist(
+buyerid integer primary key,
+prodid integer 
+
+);
+
+
+create table cart(
+buyerid integer primary key,
+prodid integer ,
+quantity integer
+);
+
+insert into wishlist values(20001 , 4001);
+insert into wishlist values(20002 , 4002);
+insert into wishlist values(20003 , 4003);
+
+insert  into cart values(20001 , 4001,250);
+insert  into cart values(20002 , 4002,270);
+insert  into cart values(20003 , 4003,290);
+
+
+drop database product;
+
+create database product;
+use product;
+
+create table product(
+prodid integer primary key,
+productname varchar(50),
+price integer,
+stock integer,
+description varchar(50),
+image blob,
+sellerid integer,
+category varchar(50),
+subcategory varchar(50),
+productrating integer
+
+);
+
+insert into product values(5001 ,'ENVY' ,10 ,300, 'for Male' ,
+'https://m.media-amazon.com/images/I/61DuQuJfAlS._SL1000_.jpg' ,101 ,'PERFUME FOR Man','Perfume' ,4);
+
+insert into product values(5002 ,'ROWDY' ,40 ,650, 'for Female' ,
+'https://m.media-amazon.com/images/I/61DuQuJfAlS._SL1000_.jpg' ,101 ,'PERFUME FOR Women','Perfume' ,3);
+
+insert into product values(5003 ,'VILEN' ,70 ,699, 'Unisex Perfume' ,
+'https://m.media-amazon.com/images/I/61DuQuJfAlS._SL1000_.jpg' ,101 ,'PERFUME FOR Unisex','Perfume' ,9);
+
+create table subsprod(
+buyerid integer primary key,
+prodid integer ,
+quantity integer
+
+);
+
+insert into subsprod values(01 ,5001 ,300);
+insert into subsprod values(02 ,5002 ,380);
+insert into subsprod values(03 ,5003 ,350);
+
